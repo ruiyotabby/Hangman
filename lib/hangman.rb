@@ -26,6 +26,13 @@ class Hangman
     return 'You ran out of guesses' if n.zero?
   end
 
+  def update_guess(guess, word, letter)
+    word.chars.each_with_index do |value, index|
+      guess = guess.split(' ').join
+      guess[index] = value if letter == value
+    end
+    guess.split('').join(' ')
+  end
 
   def random_word
     word = File.open('english.txt', 'r') { |element| element.read }.split("\n").sample
